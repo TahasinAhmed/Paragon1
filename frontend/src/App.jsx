@@ -1,10 +1,21 @@
 import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+import Home from './Pages/Home'
+import CreateUser from './Pages/CreateUsers'
+import ShowUser from './Pages/ShowUsers'
+import EditUser from './Pages/EditUsers'
+import DeleteUser from './Pages/DeleteUsers'
+
 
 const App = () => {
   return (
-    <div className='bg-blue-400 text-white'>
-      App
-    </div>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/users/create' element={<CreateUser/>} />
+      <Route path='/users/details/:id' element={<ShowUser/>} />
+      <Route path='/users/edit/:id' element={<EditUser/>} />
+      <Route path='/users/delete/:id' element={<DeleteUser/>} />
+    </Routes>
   )
 }
 
