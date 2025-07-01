@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import { BsInfoCircle } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { MdOutlineAddBox , MdOutlineDelete} from 'react-icons/md';
+import Navbar from '../Components/Navbar.jsx'
+import Hero from '../Components/Hero.jsx'
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -24,7 +26,9 @@ const Home = () => {
       });
   }, []);
   return (
-    <div className='p-4'>
+    <div className=''>
+    <Navbar />
+
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>Users List</h1>
         <Link to='/users/create'>

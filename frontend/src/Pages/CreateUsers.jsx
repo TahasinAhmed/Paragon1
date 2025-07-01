@@ -4,13 +4,14 @@ import Spinner from '../Components/Spinner';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import { HTTPURL } from '../../config';
+import Navbar from '../Components/Navbar';
 
 const CreateUsers = () => {
   const [branchName, setBranchName] = useState('');
   const [rollNo, setRollNo] = useState('');
   const [batchNo, setBatchNo] = useState('');
   const [englishName, setEnglishName] = useState('');
-  const [banglaName, setBanglaNameh] = useState('');
+  const [banglaName, setBanglaName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [fatherName, setFatherName] = useState('');
   const [motherName, setMotherName] = useState('');
@@ -30,44 +31,48 @@ const CreateUsers = () => {
   const navigate = useNavigate();
   const handleSaveUser = () => {
     const data = {
-      branchName,
-      rollNo,
-      batchNo,
-      englishName,
-      banglaName,
-      dateOfBirth,
-      fatherName,
-      motherName,
-      permanentAddress,
-      phoneNumber,
-      guardianPhoneNumber,
-      hSCResult,
-      hSCCollegeName,
-      hSCRoll,
-      hSCBoard,
-      sSCResult,
-      sSCCollegeName,
-      sSCRoll,
-      sSCBoard,
-      unit
+      BranchName: branchName,
+      RollNo: rollNo,
+      BatchNo: batchNo,
+      EnglishName: englishName,
+      BanglaName: banglaName,
+      DateOfBirth: dateOfBirth,
+      FatherName: fatherName,
+      MotherName: motherName,
+      PermanentAddress: permanentAddress,
+      PhoneNumber: phoneNumber,
+      GuardianPhoneNumber: guardianPhoneNumber,
+      HSCResult: hSCResult,
+      HSCCollegeName: hSCCollegeName,
+      HSCRoll: hSCRoll,
+      HSCBoard: hSCBoard,
+      SSCResult: sSCResult,
+      SSCCollegeName: sSCCollegeName,
+      SSCRoll: sSCRoll,
+      SSCBoard: sSCBoard,
+      Unit: unit
       };
       setLoading(true);
-      axios.post(HTTPURL+'/users')
+      axios.post(HTTPURL+'/users', data, { headers: { 'Content-Type': 'application/json' } })
       .then(() => {
         setLoading(false);
         navigate('/');
       })
       .catch((error) => {
-        setLoading(false);
+        setLoading(false);  
         alert('An error happend. Please Chack console');
         console.log(error);
       });
   };
 
   return (
-    <div className='p-4'>
-      <BackButton />
-      <h1 className='text-3xl my-4'>Register User</h1>
+    
+    <div>
+      <Navbar />
+      <div className="flex items-center gap-4 py-4 bg-white shadow-md rounded-lg">
+        <BackButton />
+        <h1 className='text-3xl mx-auto'>Register User</h1>
+      </div>
       {loading ? <Spinner /> : ''}
       <div className='py-4'>
         <div className="">
@@ -81,7 +86,7 @@ const CreateUsers = () => {
         <h2 className="text-xl font-semibold mt-6">Contact Information</h2>
         <div className='flex-wrapgrid grid-cols-4  mt-6'>
           <input type="text" value={englishName} onChange={(e) => setEnglishName(e.target.value)} placeholder="Name (In English)" className="input" />
-          <input type="text" value={banglaName} onChange={(e) => setBanglaNameh(e.target.value)} placeholder="Name (In Bangla)" className="input" />
+          <input type="text" value={banglaName} onChange={(e) => setBanglaName(e.target.value)} placeholder="Name (In Bangla)" className="input" />
 
           <input type="text" value={fatherName} onChange={(e) => setFatherName(e.target.value)} placeholder="Father's Name" className="input" />
           <input type="text" value={motherName} onChange={(e) => setMotherName(e.target.value)} placeholder="Mother's Name" className="input" />
@@ -126,8 +131,7 @@ const CreateUsers = () => {
 
         <button
           onClick={handleSaveUser}
-          className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800 mt-6"
-        >
+          className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800 mt-6">
           Submit
         </button>
       </div>
