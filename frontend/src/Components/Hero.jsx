@@ -5,8 +5,8 @@ function Hero() {
   const [count, setCount] = useState(0)
 
   return (
-    <div class="py-10 px-20 flex justify-center"> 
-      <img src={ParagonHero} alt="Paragon Logo"   className='rounded-lg'/>
+    <div className="py-10 px-10 flex justify-center"> 
+      <img src={ParagonHero} alt="Paragon Logo"   className='rounded-4xl w-400'/>
     </div>
     )
 }

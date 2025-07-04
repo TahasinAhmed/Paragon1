@@ -6,6 +6,11 @@ import ShowUser from './Pages/ShowUsers'
 import EditUser from './Pages/EditUsers'
 import DeleteUser from './Pages/DeleteUsers'
 
+import Courses from './Pages/Courses'
+import Results from './Pages/Results'
+import Publications from './Pages/Publications'
+import Notices from './Pages/Notices'
+import More from './Pages/More'
 
 const App = () => {
   return (
@@ -15,6 +20,11 @@ const App = () => {
       <Route path='/users/details/:id' element={<ShowUser/>} />
       <Route path='/users/edit/:id' element={<EditUser/>} />
       <Route path='/users/delete/:id' element={<DeleteUser/>} />
+      <Route path="/Courses" element={<Courses />} />
+      <Route path="/Results" element={<Results />} />
+      <Route path="/Publications" element={<Publications />} />
+      <Route path="/Notices" element={<Notices />} />
+      <Route path="/More" element={<More />} />
     </Routes>
   )
 }

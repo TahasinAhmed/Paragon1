@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ParagonLogo from '../assets/ParagonLogo2.png'
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 function Navbar() {
   const [count, setCount] = useState(0)
   const [isOpen, setIsOpen] = useState(false);
@@ -31,12 +32,19 @@ function Navbar() {
             isOpen ? 'flex' : 'hidden'
           }`}
         >
-          {['হোম', 'কোর্স', 'রেজাল্ট', 'পাবলিকেশন্স', 'নোটিশ', 'আরো'].map((item, index) => (
+          { [
+            { label: 'হোম', path: '/' },
+            { label: 'কোর্স', path: '/Courses' },
+            { label: 'রেজাল্ট', path: '/Results' },
+            { label: 'পাবলিকেশন্স', path: '/Publications' },
+            { label: 'নোটিশ', path: '/Notices' },
+            { label: 'আরো', path: '/More' }
+          ].map((item, index) => (
             <li
               key={index}
               className="text-white text-xl lg:text-xl px-5 py-3 hover:bg-gradient-to-t from-blue-600 to-blue-400 cursor-pointer transition-all duration-200 relative group text-center"
             >
-              <a href="">{item}</a>
+              <Link to={item.path}>{item.label}</Link>
               <div className="w-full h-1 bg-blue-900 hidden group-hover:block transition-all duration-200"></div>
             </li>
           ))}

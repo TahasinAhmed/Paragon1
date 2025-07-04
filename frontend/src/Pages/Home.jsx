@@ -26,9 +26,9 @@ const Home = () => {
       });
   }, []);
   return (
-    <div className=''>
+    <div className='bg-blue-50'>
     <Navbar />
-
+    <Hero />
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>Users List</h1>
         <Link to='/users/create'>
