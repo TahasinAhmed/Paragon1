@@ -1,5 +1,28 @@
 import mongoose from "mongoose"
 const userSchema = mongoose.Schema({
+        Name:{
+            type: String,
+            required: true,
+        },
+        Email:{
+            type: String,
+            required: true,
+            unique: true,
+        },
+        Password:{
+            type: String,
+            required: true,
+        },
+        UserType:{
+            type: String,
+            required: true,
+            enum: ["Admin", "User"],
+            default: "User",
+        },
+        ProfilePicture:{
+            type: String,
+            default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+        },
         BranchName:{
             type:String,
             required: true,
@@ -10,14 +33,6 @@ const userSchema = mongoose.Schema({
         },
         BatchNo:{
             type:String,
-            required: true,
-        },
-        EnglishName:{
-            type: String,
-            required: true,
-        },
-        BanglaName:{
-            type: String,
             required: true,
         },
         DateOfBirth:{
@@ -88,7 +103,14 @@ const userSchema = mongoose.Schema({
         }, 
         ReceiverSignature:{
             type: String,
-        }
+        },
+        Status:{
+            type: String,
+            default: "Active",
+        },
+        
+
+
     },
     {
         timestamps:true,

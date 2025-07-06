@@ -5,11 +5,15 @@ const router = express.Router();
 router.post("/", async (request, response)=>{
     try{
         if(
+            !request.body.Name ||
+            !request.body.Email ||
+            !request.body.Password ||
             !request.body.BranchName ||
             !request.body.RollNo ||
             !request.body.BatchNo ||
-            !request.body.EnglishName ||
-            !request.body.BanglaName ||
+            !request.body.DateOfBirth ||
+            !request.body.FatherName ||
+            !request.body.MotherName ||
             !request.body.DateOfBirth ||
             !request.body.FatherName ||
             !request.body.MotherName ||
@@ -31,11 +35,14 @@ router.post("/", async (request, response)=>{
             });
         }
         const newUser = {
+            Name: request.body.Name,
+            Email: request.body.Email,
+            Password: request.body.Password,
+            ProfilePicture: request.body.ProfilePicture || "https://example.com/default-profile-picture.png", // Default profile picture URL
+            UserType: request.body.UserType || "User", // Default user type is "User"
             BranchName: request.body.BranchName,
             RollNo: request.body.RollNo,
             BatchNo: request.body.BatchNo,
-            EnglishName: request.body.EnglishName,
-            BanglaName: request.body.BanglaName,
             DateOfBirth: request.body.DateOfBirth,
             FatherName: request.body.FatherName,
             MotherName: request.body.MotherName,
@@ -88,11 +95,14 @@ router.get("/:id", async (request, response)=>{
 router.put("/:id", async (request, response)=>{
     try{
         if(
+            !request.body.Name ||
+            !request.body.Email ||
+            !request.body.Password ||
+            !request.body.ProfilePicture ||
+            !request.body.UserType ||
             !request.body.BranchName ||
             !request.body.RollNo ||
             !request.body.BatchNo ||
-            !request.body.EnglishName ||
-            !request.body.BanglaName ||
             !request.body.DateOfBirth ||
             !request.body.FatherName ||
             !request.body.MotherName ||

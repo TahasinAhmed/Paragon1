@@ -8,6 +8,8 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { MdOutlineAddBox , MdOutlineDelete} from 'react-icons/md';
 import Navbar from '../Components/Navbar.jsx'
 import Hero from '../Components/Hero.jsx'
+import { Copyright } from 'lucide-react';
+import Footer from '../Components/Footer.jsx';
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -134,6 +136,7 @@ const Home = () => {
           </tbody>
         </table>
       )}
+      <Footer />
     </div>
   )
 }

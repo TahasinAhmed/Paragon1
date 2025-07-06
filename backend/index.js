@@ -1,15 +1,20 @@
-import express, { request, response } from  "express"
-import {mongoDBURL, PORT} from "./config.js"
+import express from "express"
 import mongoose from 'mongoose'
-import {User} from './models/usermodel.js'
 import userRoute from "./routes/userRoute.js"
+import adminRoute from "./routes/adminRoute.js";
+import authRoute from "./routes/AuthRouter.js";
 import cors from 'cors';
+import { config } from 'dotenv';
+config();
 
+
+const PORT = process.env.PORT;
+const mongoDBURL = process.env.mongoDBURL;
+const HTTPURL = process.env.HTTPURL;
 
 const app = express();
 app.use(express.json());
 
-app.use(cors());
 app.use(cors({
     origin: 'http://localhost:5173', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -22,6 +27,8 @@ app.get('/', (request, response) =>{
 });
 
 app.use('/users', userRoute);
+app.use('/admin', adminRoute);
+app.use('/auth', authRoute);
 
 
 mongoose
