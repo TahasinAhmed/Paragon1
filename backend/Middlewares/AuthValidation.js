@@ -1,10 +1,10 @@
 import {Joi} from 'joi'
 
-const signupValidation = (request, response, next) => {
+const registerValidation = (request, response, next) => {
     const schema = Joi.object({
-        name: Joi.string().min(3).max(30).required(),
-        email: Joi.string().email().required(),
-        password: Joi.string().min(6).required()
+        FullName: Joi.string().min(3).max(30).required(),
+        Email: Joi.string().email().required(),
+        Password: Joi.string().min(6).required()
     });
 
     const {error} = schema.validate(request.body);
@@ -14,10 +14,10 @@ const signupValidation = (request, response, next) => {
     next();
 }
 
-const loginValidation = (request, response, next) => {
+const signinValidation = (request, response, next) => {
     const schema = Joi.object({
-        email: Joi.string().email().required(),
-        password: Joi.string().min(6).required()
+        Email: Joi.string().email().required(),
+        Password: Joi.string().min(6).required()
     });
 
     const {error} = schema.validate(request.body);

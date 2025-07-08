@@ -11,6 +11,9 @@ import Results from './Pages/Results'
 import Publications from './Pages/Publications'
 import Notices from './Pages/Notices'
 import More from './Pages/More'
+import AdminHome from './Pages/AdminHome'
+import AdminSignIn from './Pages/AdminSignIn'
+import AdminRegister from './Pages/AdminRegister'
 
 const App = () => {
   return (
@@ -25,6 +28,10 @@ const App = () => {
       <Route path="/Publications" element={<Publications />} />
       <Route path="/Notices" element={<Notices />} />
       <Route path="/More" element={<More />} />
+      <Route path="/AdminHome" element={<AdminHome />} />
+      <Route path="/AdminSignIn" element={<AdminSignIn />} />
+      <Route path="/AdminRegister" element={<AdminRegister />} />
+      {/* Add more routes as needed */}
     </Routes>
   )
 }

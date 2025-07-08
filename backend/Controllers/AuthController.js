@@ -1,16 +1,16 @@
-const signup = async (request, response) => {
+const adminRegister = async (request, response) => {
     try {
-        const { name, email, password } = request.body;
-        if (!name || !email || !password) {
+        const { FullName, Email, Password } = request.body;
+        if (!FullName || !Email || !Password) {
             return response.status(400).send({ message: "All fields are required." });
         }
         // Check if user already exists
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ Email });
         if (existingUser) {
             return response.status(409).send({ message: "User already exists." });
         }
         // Create new user
-        const newUser = new User({ name, email, password });
+        const newUser = new User({ FullName, Email, Password, UserType: "Admin" });
         await newUser.save();
         return response.status(201).send(newUser);
     } catch (error) {
@@ -19,15 +19,15 @@ const signup = async (request, response) => {
     }
 }
 
-const login = async (request, response) => {
+const adminSignin = async (request, response) => {
     try {
-        const { email, password } = request.body;
-        if (!email || !password) {
+        const { Email, Password } = request.body;
+        if (!Email || !Password) {
             return response.status(400).send({ message: "Email and password are required." });
         }
         // Authenticate user
-        const user = await User.findOne({ email });
-        if (!user || user.password !== password) {
+        const user = await User.findOne({ Email });
+        if (!user || user.Password !== Password) {
             return response.status(401).send({ message: "Invalid email or password." });
         }
         // Generate token
@@ -39,4 +39,4 @@ const login = async (request, response) => {
     }
 }
 
-export default { signup, login };
+export default { adminRegister, adminSignin };
